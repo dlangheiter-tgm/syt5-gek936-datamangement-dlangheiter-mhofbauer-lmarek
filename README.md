@@ -3,6 +3,12 @@
 ## Aufgabenstellung
 Die detaillierte [Aufgabenstellung](TASK.md) beschreibt die notwendigen Schritte zur Realisierung.
 
+## Participantss
+  - David Langheiter
+  - Matthias Hofbauer
+  - Lukas Marek
+
+
 ## Execute
 To execute this project you need to have Node/NPM and Docker/docker-compose installed.
 
@@ -24,8 +30,8 @@ npm run build
 ```
 This will build the application into the directory build. This can be hosted by any webserver (Apache, ...).
 
-### The db Server
-The DB server is a simple couchbase server hosted in docker.
+### The DB-Server
+The DB-server is a simple couchbase server hosted in docker.
 
 To run the db server go into the directory `server`. Then run
 ```shell script
@@ -34,9 +40,14 @@ docker-compose up -d
 This will start the db server in disconnected (-d) mode.
 The default login credentials are admin admin.
 
-## Implementierung
+## Implementation
 For our project we use React and PouchDB for the WebApp and CouchDB as server, for reasons, which are explained here: [Latex]()
 
+### Responsibilities
+To achieve our project we split it into three parts, that will be managed by one person each.
+  - David Langheiter will be responsible for the DB-Server(CouchDB)
+  - Matthias Hofbauer will manage the synchronization between all the parts(PouchDB)
+  - Lukas Marek will create the WebApp(React)
 
 ## Quellen
 

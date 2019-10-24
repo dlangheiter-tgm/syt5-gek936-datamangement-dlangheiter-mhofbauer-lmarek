@@ -1,0 +1,9 @@
+version: '3'
+services:
+  db:
+    image: couchdb:latest
+    ports:
+      - 5984:5984
+    volumes:
+      - ./ser/db/data:/opt/couchdb/data
+      - ./ser/db/config:/opt/couchdb/etc/local.d/

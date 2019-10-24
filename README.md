@@ -1,7 +1,7 @@
-# "*Datamanagement - Synchronisation*"
+# "*Datamanagement - Synchronization*"
 
-## Aufgabenstellung
-Die detaillierte [Aufgabenstellung](TASK.md) beschreibt die notwendigen Schritte zur Realisierung.
+## Task
+You can find the task details under [Task Description](TASK.md) which describes the required steps for realization.
 
 ## Participantss
   - David Langheiter

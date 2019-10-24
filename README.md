@@ -32,6 +32,7 @@ To run the db server go into the directory `server`. Then run
 docker-compose up -d
 ```
 This will start the db server in disconnected (-d) mode.
+The default login credentials are admin admin.
 
 ## Implementierung
 For our project we use React and PouchDB for the WebApp and CouchDB as server, for reasons, which are explained here: [Latex]()

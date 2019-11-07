@@ -1,5 +1,8 @@
 # "*Datamanagement - Synchronization*"
 
+##
+Project to have a synchronized shopping list between client devices. 
+
 ## Task
 You can find the task details under [Task Description](TASK.md) which describes the required steps for realization.
 
@@ -7,11 +10,6 @@ You can find the task details under [Task Description](TASK.md) which describes 
   - David Langheiter
   - Matthias Hofbauer
   - Lukas Marek
-
-### Tasks
-* [x] **DB Server** Langheiter
-* [ ] **UI** Marek 
-* [ ] **Client DB Synchronization** Hofbauer 
 
 ## Execute
 To execute this project you need to have Node/NPM and Docker/docker-compose installed.
@@ -61,7 +59,14 @@ To achieve our project we split it into three parts, that will be managed by one
   - Matthias Hofbauer will manage the synchronization between all the parts(PouchDB)
   - Lukas Marek will create the WebApp(React)
 
-## Quellen
+### Tasks
+* [x] **DB Server** Langheiter
+* [ ] **UI** Marek 
+* [ ] **Client DB Synchronization** Hofbauer 
+* [ ] **Ui Api sync** Langheiter
+* [ ] **Testing**
+
+## Resources
 
 [Docker Couchbase](https://hub.docker.com/_/couchbase)
 

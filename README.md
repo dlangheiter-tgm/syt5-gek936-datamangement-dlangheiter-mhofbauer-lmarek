@@ -8,6 +8,10 @@ You can find the task details under [Task Description](TASK.md) which describes 
   - Matthias Hofbauer
   - Lukas Marek
 
+### Tasks
+* [x] **DB Server** Langheiter
+* [ ] **UI** Marek 
+* [ ] **Client DB Synchronization** Hofbauer 
 
 ## Execute
 To execute this project you need to have Node/NPM and Docker/docker-compose installed.

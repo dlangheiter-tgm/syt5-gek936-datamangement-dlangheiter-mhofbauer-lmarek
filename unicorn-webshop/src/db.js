@@ -5,10 +5,10 @@ var remoteCouch = false;
 
 
 /**
- * Adds Item to the DB
- * @param text
+ * Creates Item in the DB
+ * @param text Name of the Shopping-List-Item
  */
-function addShopping(text) {
+function createItem(text) {
     var shopItem = {
         _id: new Date().toISOString(),
         title: text,
@@ -23,16 +23,16 @@ function addShopping(text) {
 
 /**
  * Deletes specific item from the DB
- * @param shop
+ * @param shopItem Shopping-List-Item
  */
-function deleteButtonPressed(shopItem) {
+function deleteItem(shopItem) {
     db.remove(shopItem);
 }
 
 
 /**
  * If the checkbox-status of an item changes, the item will be changed
- * @param shopItem
+ * @param shopItem Shopping-List-Item
  * @param completed
  */
 function checkboxChanged(shopItem, completed) {
@@ -41,7 +41,7 @@ function checkboxChanged(shopItem, completed) {
 }
 
 /**
- * Updates all changes to the
+ * Updates all changes to the DB and takes all the changes from the central-remote-DB
  */
 function sync() {
     syncDom.setAttribute('data-sync-state', 'syncing');
@@ -50,7 +50,11 @@ function sync() {
     db.replicate.from(remoteCouch, opts, syncError);
 }
 
-
+/**
+ * Changes the Title of an item
+ * @param shopItem Shopping-List-Item
+ * @param newTitle The new Title for the Shopping-List-Item
+ */
 function updateTitle(shopItem, newTitle) {
     shopItem.title = newTitle;
     db.put(shopItem);

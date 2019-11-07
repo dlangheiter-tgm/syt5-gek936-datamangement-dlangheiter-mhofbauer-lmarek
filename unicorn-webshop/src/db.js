@@ -9,12 +9,12 @@ var remoteCouch = false;
  * @param text
  */
 function addShopping(text) {
-    var sitem = {
+    var shopItem = {
         _id: new Date().toISOString(),
         title: text,
         completed: false
     };
-    db.put(sitem, function callback(err, result) {
+    db.put(shopItem, function callback(err, result) {
         if (!err) {
             console.log('Successfully added an item!');
         }
@@ -25,22 +25,24 @@ function addShopping(text) {
  * Deletes specific item from the list
  * @param shop
  */
-function deleteButtonPressed(sitem) {
-    db.remove(sitem);
+function deleteButtonPressed(shopItem) {
+    db.remove(shopItem);
 }
 
 
-function checkboxChanged(sitem, event) {
-    sitem.completed = event.target.checked;
-    db.put(todo);
+function checkboxChanged(shopItem, completed) {
+    shopItem.completed = completed;
+    db.put(shopItem);
 }
 
-function resetShoppingList(sitem, event) {
-    var trimmedText = event.target.value.trim();
-    if (!trimmedText) {
-        db.remove(sitem);
-    } else {
-        sitem.title = trimmedText;
-        db.put(sitem);
-    }
+function sync() {
+    syncDom.setAttribute('data-sync-state', 'syncing');
+    var opts = {live: true};
+    db.replicate.to(remoteCouch, opts, syncError);
+    db.replicate.from(remoteCouch, opts, syncError);
 }
+
+
+
+
+

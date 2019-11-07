@@ -37,6 +37,9 @@ To run the db server go into the directory `server`. Then run
 ```shell script
 docker-compose up -d
 ```
+
+**On First startup** you need to run the `setup-db.sh` script. This setups all necessary databases and users.
+
 This will start the db server in disconnected (-d) mode.
 The default login credentials are admin admin.
 

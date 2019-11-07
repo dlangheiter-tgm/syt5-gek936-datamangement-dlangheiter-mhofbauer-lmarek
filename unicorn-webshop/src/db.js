@@ -5,7 +5,7 @@ var remoteCouch = false;
 
 
 /**
- * Adds Item to list
+ * Adds Item to the DB
  * @param text
  */
 function addShopping(text) {
@@ -22,7 +22,7 @@ function addShopping(text) {
 }
 
 /**
- * Deletes specific item from the list
+ * Deletes specific item from the DB
  * @param shop
  */
 function deleteButtonPressed(shopItem) {
@@ -30,11 +30,19 @@ function deleteButtonPressed(shopItem) {
 }
 
 
+/**
+ * If the checkbox-status of an item changes, the item will be changed
+ * @param shopItem
+ * @param completed
+ */
 function checkboxChanged(shopItem, completed) {
     shopItem.completed = completed;
     db.put(shopItem);
 }
 
+/**
+ * Updates all changes to the
+ */
 function sync() {
     syncDom.setAttribute('data-sync-state', 'syncing');
     var opts = {live: true};
@@ -43,6 +51,9 @@ function sync() {
 }
 
 
-
+function updateTitle(shopItem, newTitle) {
+    shopItem.title = newTitle;
+    db.put(shopItem);
+}
 
 

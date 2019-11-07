@@ -17,6 +17,11 @@ There are two parts to this project:
 ### The WebApp
 This is a React based OnePage Application.
 
+To install all necessary dependencies run
+```shell script
+npm install
+```
+
 To run this you need to go into the folder `unicorn-webshop`.
 For development run
 ```shell script

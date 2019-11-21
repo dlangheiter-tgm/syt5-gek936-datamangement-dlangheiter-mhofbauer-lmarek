@@ -62,7 +62,7 @@ To achieve our project we split it into three parts, that will be managed by one
 ### Tasks
 * [x] **DB Server** Langheiter
 * [ ] **UI** Marek 
-* [ ] **Client DB Synchronization** Hofbauer 
+* [x] **Client DB Synchronization** Hofbauer 
 * [ ] **Ui Api sync** Langheiter
 * [ ] **Testing**
 

@@ -1,7 +1,7 @@
 
 var PouchDB = require('pouchdb');
 var db = new PouchDB('my_db');
-var remoteCouch = false;
+var remoteCouch = new PouchDB('http://redt6a.thekingdave.com:5984/shopping-list');
 
 
 /**

@@ -1,7 +1,5 @@
 import React from 'react';
 import './App.css';
-import {List} from "@material-ui/core";
-import {Entry} from "./Entry";
 import {EntryList} from "./EntryList";
 
 class App extends React.Component {

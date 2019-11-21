@@ -56,11 +56,6 @@ export function updateTitle(shopItem, newTitle) {
     db.put(shopItem);
 }
 
-export function updateCompleted(shopItem, completed) {
-    shopItem.completed = completed;
-    db.put(shopItem);
-}
-
 export function updateAmount(shopItem, newCommentary) {
     shopItem.commentary = newCommentary;
     db.put(shopItem);

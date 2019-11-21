@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import {EntryList} from "./EntryList";
+import './db';
 
 class App extends React.Component {
 
@@ -47,9 +48,6 @@ class App extends React.Component {
         }));
     }
 
-
-
 }
 
 export default App;
- 

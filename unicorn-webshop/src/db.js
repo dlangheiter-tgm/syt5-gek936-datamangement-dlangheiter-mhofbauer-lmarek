@@ -1,8 +1,6 @@
-
-var PouchDB = require('pouchdb');
-var db = new PouchDB('my_db');
-var remoteCouch = new PouchDB('http://redt6a.thekingdave.com:5984/shopping-list');
-
+import PouchDB from 'pouchdb';
+const db = new PouchDB('my_db');
+const remoteCouch = new PouchDB('http://redt6a.thekingdave.com:5984/shopping-list');
 
 /**
  * Creates Item in the DB
@@ -45,10 +43,9 @@ function checkboxChanged(shopItem, completed) {
  * Updates all changes to the DB and takes all the changes from the central-remote-DB
  */
 function sync() {
-    syncDom.setAttribute('data-sync-state', 'syncing');
     var opts = {live: true};
-    db.replicate.to(remoteCouch, opts, syncError);
-    db.replicate.from(remoteCouch, opts, syncError);
+    db.replicate.to(remoteCouch, opts);
+    db.replicate.from(remoteCouch, opts);
 }
 
 /**

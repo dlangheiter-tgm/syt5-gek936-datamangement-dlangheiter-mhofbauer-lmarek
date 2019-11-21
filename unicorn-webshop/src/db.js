@@ -43,7 +43,7 @@ export function checkboxChanged(shopItem, completed) {
  * Updates all changes to the DB and takes all the changes from the central-remote-DB
  */
 export function sync() {
-    return db.sync(remoteCouch, {live: true});
+    return db.sync(remoteCouch, {live: true, retry: true});
 }
 
 /**

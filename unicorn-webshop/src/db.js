@@ -61,8 +61,10 @@ function updateTitle(shopItem, newTitle) {
     db.put(shopItem);
 }
 
-
-
+function updateAmount(shopItem, newAmount) {
+    shopItem.amount = newAmount;
+    db.put(shopItem);
+}
 
 
 

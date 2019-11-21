@@ -6,23 +6,23 @@ class App extends React.Component {
 
     constructor(props) {
         super(props);
-        this.list = [
+        const list = [
             {title: "Testing", completed: true, id: 'xdhaha'},
             {title: "Hello", completed: false, id: 'hahaxd'},
             {title: "Hello2", completed: false, id: 'haxdha'},
         ];
+        this.state = {list};
     }
 
     render() {
-        console.log("RENDER", this.list);
         return (
-            <EntryList list={this.list} update={this.update} delete={this.delete} />
+            <EntryList list={this.state.list} update={this.update} delete={this.delete} />
         );
     }
 
     update = (entry) => {
         this.setState({
-            list: this.list.map(e => {
+            list: this.state.list.map(e => {
                 if (e.id === entry.id) {
                     return entry;
                 }
@@ -32,14 +32,16 @@ class App extends React.Component {
     }
 
     delete = (entry) => {
-        console.log("DELETE", entry);
-        const newList = this.list.filter(e => {
+        const newList = this.state.list.filter(e => {
             return e.id !== entry.id;
         });
-        console.log(newList);
         this.setState(({
             list: newList,
         }));
+    }
+
+    create = (entry) => {
+        const newList = this.state.list.add({title: entry, completed: false, id:'sad'});
     }
 
 }

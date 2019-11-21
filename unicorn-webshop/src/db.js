@@ -12,7 +12,7 @@ function createItem(text) {
     var shopItem = {
         _id: new Date().toISOString(),
         title: text,
-        amount: text,
+        commentary: text,
         completed: false
     };
     db.put(shopItem, function callback(err, result) {
@@ -61,8 +61,8 @@ function updateTitle(shopItem, newTitle) {
     db.put(shopItem);
 }
 
-function updateAmount(shopItem, newAmount) {
-    shopItem.amount = newAmount;
+function updateAmount(shopItem, newCommentary) {
+    shopItem.commentary = newCommentary;
     db.put(shopItem);
 }
 

@@ -42,7 +42,12 @@ class App extends React.Component {
 
     create = (entry) => {
         const newList = this.state.list.add({title: entry, completed: false, id:'sad'});
+        this.setState(({
+            list: newList,
+        }));
     }
+
+
 
 }
 

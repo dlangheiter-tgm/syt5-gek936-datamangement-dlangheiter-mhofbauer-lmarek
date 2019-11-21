@@ -22,7 +22,6 @@ export class EntryList extends React.Component {
                         entry={e}
                         update={this.props.update}
                         delete={this.props.delete}
-                        create={this.props.create}
                     />)}
                 </List>
                 <br/>

@@ -12,6 +12,7 @@ function createItem(text) {
     var shopItem = {
         _id: new Date().toISOString(),
         title: text,
+        amount: text,
         completed: false
     };
     db.put(shopItem, function callback(err, result) {
@@ -59,5 +60,9 @@ function updateTitle(shopItem, newTitle) {
     shopItem.title = newTitle;
     db.put(shopItem);
 }
+
+
+
+
 
 

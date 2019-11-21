@@ -12,8 +12,7 @@ export class Entry extends React.Component {
             <ListItem>
                 <ListItemIcon>
                     <IconButton onClick={() => {
-                        entry.completed = !entry.completed;
-                        this.props.update(entry);
+                        this.props.update(!entry.completed);
                     }}>
                         {entry.completed ? <CheckIcon/> : <CloseIcon/>}
                     </IconButton>

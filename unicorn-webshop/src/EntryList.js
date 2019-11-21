@@ -10,7 +10,7 @@ export class EntryList extends React.Component {
                 {this.props.list.map(e => <Entry
                     key={e.id}
                     entry={e}
-                    update={this.props.update}
+                    update={(v) => this.props.update(e, v)}
                     delete={this.props.delete}
                 />)}
             </List>

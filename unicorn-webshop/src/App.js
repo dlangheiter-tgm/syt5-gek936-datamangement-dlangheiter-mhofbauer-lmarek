@@ -1,36 +1,43 @@
 import React from 'react';
 import './App.css';
 import {EntryList} from "./EntryList";
-import './db';
+import {db, sync, updateCompleted} from './db';
 
 class App extends React.Component {
 
     constructor(props) {
         super(props);
-        this.list = [
-            {title: "Testing", completed: true, id: 'xdhaha'},
-            {title: "Hello", completed: false, id: 'hahaxd'},
-            {title: "Hello2", completed: false, id: 'haxdha'},
-        ];
+        this.state = {list: []};
 
+        this.updateFromDb();
+        sync().on('change', (change) => {
+            this.updateFromDb();
+        }).on('error', (err) => {
+            console.error(err);
+        });
+
+    }
+
+    updateFromDb() {
+        db.allDocs({include_docs: true}).then(
+            (result) => {
+                const setList = result.rows.map((r) => ({...r.doc}));
+                console.log(setList);
+                this.setState({
+                    list: setList,
+                });
+            }
+        ).catch((err) => console.log(err));
     }
 
     render() {
-        console.log("RENDER", this.list);
         return (
-            <EntryList list={this.list} update={this.update} delete={this.delete} />
+            <EntryList list={this.state.list} update={this.update} delete={this.delete} />
         );
     }
 
-    update = (entry) => {
-        this.setState({
-            list: this.list.map(e => {
-                if (e.id === entry.id) {
-                    return entry;
-                }
-                return e;
-            })
-        });
+    update = (entry, v) => {
+        updateCompleted(entry, v);
     }
 
     delete = (entry) => {

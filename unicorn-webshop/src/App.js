@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import {EntryList} from "./EntryList";
+import './db';
 
 class App extends React.Component {
 
@@ -11,6 +12,7 @@ class App extends React.Component {
             {title: "Hello", completed: false, id: 'hahaxd'},
             {title: "Hello2", completed: false, id: 'haxdha'},
         ];
+
     }
 
     render() {

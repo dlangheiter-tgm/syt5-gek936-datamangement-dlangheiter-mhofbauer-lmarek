@@ -16,19 +16,19 @@ export class EntryList extends React.Component {
     render() {
         return (
             <div>
-                <List>
-                    {this.props.list.map(e => <Entry
-                        key={e.id}
-                        entry={e}
-                        update={this.props.update}
-                        delete={this.props.delete}
-                    />)}
-                </List>
-                <br/>
-                <TextField value={this.state.addTitle} onChange={this.setTitle}/>
-                <IconButton onClick={() => this.props.create({title: this.state.addTitle})}>
-                    <AddIcon/>
-                </IconButton>
+            <List>
+                {this.props.list.map(e => <Entry
+                    key={e.id}
+                    entry={e}
+                    update={(v) => this.props.update(e, v)}
+                    delete={this.props.delete}
+                />)}
+            </List>
+            <br/>
+            <TextField value={this.state.addTitle} onChange={this.setTitle}/>
+            <IconButton onClick={() => this.props.create({title: this.state.addTitle})}>
+                <AddIcon/>
+            </IconButton>
             </div>
         );
     }

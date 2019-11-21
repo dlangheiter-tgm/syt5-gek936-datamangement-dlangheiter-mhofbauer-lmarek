@@ -1,13 +1,13 @@
 import PouchDB from 'pouchdb';
-const db = new PouchDB('my_db');
+export const db = new PouchDB('my_db');
 const remoteCouch = new PouchDB('http://redt6a.thekingdave.com:5984/shopping-list');
 
 /**
  * Creates Item in the DB
  * @param text Name of the Shopping-List-Item
  */
-function createItem(text) {
-    var shopItem = {
+export function createItem(text) {
+    const shopItem = {
         _id: new Date().toISOString(),
         title: text,
         commentary: text,
@@ -24,7 +24,7 @@ function createItem(text) {
  * Deletes specific item from the DB
  * @param shopItem Shopping-List-Item
  */
-function deleteItem(shopItem) {
+export function deleteItem(shopItem) {
     db.remove(shopItem);
 }
 
@@ -34,7 +34,7 @@ function deleteItem(shopItem) {
  * @param shopItem Shopping-List-Item
  * @param completed
  */
-function checkboxChanged(shopItem, completed) {
+export function checkboxChanged(shopItem, completed) {
     shopItem.completed = completed;
     db.put(shopItem);
 }
@@ -42,10 +42,8 @@ function checkboxChanged(shopItem, completed) {
 /**
  * Updates all changes to the DB and takes all the changes from the central-remote-DB
  */
-function sync() {
-    var opts = {live: true};
-    db.replicate.to(remoteCouch, opts);
-    db.replicate.from(remoteCouch, opts);
+export function sync() {
+    return db.sync(remoteCouch, {live: true});
 }
 
 /**
@@ -53,12 +51,17 @@ function sync() {
  * @param shopItem Shopping-List-Item
  * @param newTitle The new Title for the Shopping-List-Item
  */
-function updateTitle(shopItem, newTitle) {
+export function updateTitle(shopItem, newTitle) {
     shopItem.title = newTitle;
     db.put(shopItem);
 }
 
-function updateAmount(shopItem, newCommentary) {
+export function updateCompleted(shopItem, completed) {
+    shopItem.completed = completed;
+    db.put(shopItem);
+}
+
+export function updateAmount(shopItem, newCommentary) {
     shopItem.commentary = newCommentary;
     db.put(shopItem);
 }

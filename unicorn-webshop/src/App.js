@@ -38,6 +38,7 @@ class App extends React.Component {
 
     update = (entry, v) => {
         updateCompleted(entry, v);
+        this.updateFromDb();
     }
 
     delete = (entry) => {

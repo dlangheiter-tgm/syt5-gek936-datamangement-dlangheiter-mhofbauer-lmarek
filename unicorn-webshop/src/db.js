@@ -1,6 +1,6 @@
 import PouchDB from 'pouchdb';
 export const db = new PouchDB('my_db');
-const remoteCouch = new PouchDB('http://redt6a.thekingdave.com:5984/shopping-list');
+const remoteCouch = new PouchDB('https://couch.redt6a.thekingdave.com/shopping-list');
 
 /**
  * Creates Item in the DB

@@ -51,7 +51,7 @@ This will start the db server in disconnected (-d) mode.
 The default login credentials are admin admin.
 
 ## Implementation
-For our project we use React and PouchDB for the WebApp and CouchDB as server, for reasons, which are explained here: [Latex](UnicornWebshop.pdf)
+For our project we use React and PouchDB for the WebApp and CouchDB as server, for reasons, which are explained here: [Latex]()
 
 ### Responsibilities
 To achieve our project we split it into three parts, that will be managed by one person each.

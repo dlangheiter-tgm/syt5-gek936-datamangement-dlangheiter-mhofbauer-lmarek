@@ -1,6 +1,7 @@
 import React from 'react';
 import {EntryList} from "./EntryList";
 import {db, sync, createItem, deleteItem, updateEntry} from './db';
+import {CreateEntry} from "./CreateEntry";
 
 class App extends React.Component {
 
@@ -31,7 +32,10 @@ class App extends React.Component {
 
     render() {
         return (
-            <EntryList list={this.state.list} update={this.update} delete={this.delete} create={this.create}/>
+            <div style={{display: 'grid', gridTemplateColumns: '1fr 400px'}}>
+                <EntryList list={this.state.list} update={this.update} delete={this.delete}/>
+                <CreateEntry create={this.create}/>
+            </div>
         );
     }
 

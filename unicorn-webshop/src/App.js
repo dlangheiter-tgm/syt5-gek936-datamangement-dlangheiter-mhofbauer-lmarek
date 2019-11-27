@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import {EntryList} from "./EntryList";
 import {db, sync, createItem, deleteItem, updateEntry} from './db';
 

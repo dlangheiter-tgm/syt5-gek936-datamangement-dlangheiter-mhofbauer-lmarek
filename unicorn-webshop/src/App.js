@@ -2,14 +2,19 @@ import React from 'react';
 import {EntryList} from "./EntryList";
 import {db, sync, createItem, deleteItem, updateEntry} from './db';
 import {CreateEntry} from "./CreateEntry";
+import {EditEntry} from "./EditEntry";
 
 class App extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {list: []};
+        this.state = {
+            list: [],
+            curEdit: null,
+        };
 
         this.updateFromDb();
+
         sync().on('change', (change) => {
             this.updateFromDb();
         }).on('error', (err) => {
@@ -33,15 +38,33 @@ class App extends React.Component {
     render() {
         return (
             <div style={{display: 'grid', gridTemplateColumns: '1fr 400px', alignItems: 'start'}}>
-                <EntryList list={this.state.list} update={this.update} delete={this.delete}/>
-                <CreateEntry create={this.create}/>
+                <EntryList
+                    list={this.state.list}
+                    update={this.updateCompleted}
+                    delete={this.delete}
+                    select={this.select}
+                />
+                <div>
+                    {this.state.curEdit &&
+                    <EditEntry
+                        entry={this.state.curEdit}
+                        update={this.updateGeneral}
+                        close={this.closeEdit}
+                    />
+                    }
+                    <CreateEntry create={this.create}/>
+                </div>
             </div>
         );
     }
 
-    update = (entry, v) => {
+    updateCompleted = (entry, v) => {
         entry.completed = v;
-        updateEntry(entry, v);
+        this.updateGeneral(entry);
+    };
+
+    updateGeneral = (entry) => {
+        updateEntry(entry);
         this.updateFromDb();
     };
 
@@ -53,6 +76,20 @@ class App extends React.Component {
     create = (entry) => {
         createItem(entry.title, entry.commentary);
         this.updateFromDb();
+    };
+
+    select = (entry) => {
+        this.setState({
+            curEdit: null,
+        }, () => this.setState({
+            curEdit: entry,
+        }));
+    }
+
+    closeEdit = () => {
+        this.setState({
+            curEdit: null,
+        });
     }
 
 }

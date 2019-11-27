@@ -8,9 +8,11 @@ export class Entry extends React.Component {
     render() {
         const entry = this.props.entry;
         return (
-            <ListItem>
+            <ListItem onClick={this.props.select} button>
                 <ListItemIcon>
-                    <IconButton onClick={() => {
+                    <IconButton onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
                         this.props.update(!entry.completed);
                     }}>
                         {entry.completed
@@ -33,4 +35,5 @@ Entry.propTypes = {
     entry: PropTypes.object,
     update: PropTypes.func,
     delete: PropTypes.func,
+    select: PropTypes.func,
 };

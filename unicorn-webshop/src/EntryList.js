@@ -13,6 +13,7 @@ export class EntryList extends React.Component {
                     entry={e}
                     update={(v) => this.props.update(e, v)}
                     delete={() => this.props.delete(e)}
+                    select={() => this.props.select(e)}
                 />)}
             </List>
         );
@@ -23,4 +24,5 @@ EntryList.propTypes = {
     list: PropTypes.array,
     update: PropTypes.func,
     delete: PropTypes.func,
+    select: PropTypes.func,
 };

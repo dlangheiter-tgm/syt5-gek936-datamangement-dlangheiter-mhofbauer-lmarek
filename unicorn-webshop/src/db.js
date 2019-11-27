@@ -4,20 +4,17 @@ const remoteCouch = new PouchDB('http://redt6a.thekingdave.com:5984/shopping-lis
 
 /**
  * Creates Item in the DB
- * @param text Name of the Shopping-List-Item
+ * @param title Title of the Shopping-List-Item
+ * @param commentary Comment of the Shopping-List-Item
  */
-export function createItem(text) {
+export function createItem(title, commentary="") {
     const shopItem = {
         _id: new Date().toISOString(),
-        title: text,
-        commentary: text,
+        title,
+        commentary,
         completed: false
     };
-    db.put(shopItem, function callback(err, result) {
-        if (!err) {
-            console.log('Successfully added an item!');
-        }
-    });
+    db.put(shopItem);
 }
 
 /**

@@ -32,7 +32,7 @@ class App extends React.Component {
 
     render() {
         return (
-            <div style={{display: 'grid', gridTemplateColumns: '1fr 400px'}}>
+            <div style={{display: 'grid', gridTemplateColumns: '1fr 400px', alignItems: 'start'}}>
                 <EntryList list={this.state.list} update={this.update} delete={this.delete}/>
                 <CreateEntry create={this.create}/>
             </div>

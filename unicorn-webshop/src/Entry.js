@@ -18,7 +18,7 @@ export class Entry extends React.Component {
                         {entry.completed ? <CheckIcon/> : <CloseIcon/>}
                     </IconButton>
                 </ListItemIcon>
-                <ListItemText primary={entry.title}/>
+                <ListItemText primary={entry.title} secondary={entry.commentary}/>
                 <ListItemSecondaryAction>
                     <IconButton onClick={this.props.delete}>
                         <DeleteIcon/>

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {IconButton, List, TextField} from "@material-ui/core";
 import {Entry} from "./Entry";
 import AddIcon from "@material-ui/icons/Add";
@@ -19,7 +20,7 @@ export class EntryList extends React.Component {
                         key={e._id}
                         entry={e}
                         update={(v) => this.props.update(e, v)}
-                        delete={this.props.delete}
+                        delete={() => this.props.delete(e)}
                     />)}
                 </List>
                 <br/>
@@ -42,5 +43,11 @@ export class EntryList extends React.Component {
             addTitle: "",
         });
     };
-
 }
+
+EntryList.propTypes = {
+    list: PropTypes.array,
+    update: PropTypes.func,
+    delete: PropTypes.func,
+    create: PropTypes.func,
+};

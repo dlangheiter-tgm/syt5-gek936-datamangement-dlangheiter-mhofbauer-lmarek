@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {ListItem, ListItemText, ListItemIcon, ListItemSecondaryAction, IconButton} from "@material-ui/core";
 import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
@@ -19,7 +20,7 @@ export class Entry extends React.Component {
                 </ListItemIcon>
                 <ListItemText primary={entry.title}/>
                 <ListItemSecondaryAction>
-                    <IconButton onClick={() => this.props.delete(entry)}>
+                    <IconButton onClick={this.props.delete}>
                         <DeleteIcon/>
                     </IconButton>
                 </ListItemSecondaryAction>
@@ -29,5 +30,7 @@ export class Entry extends React.Component {
 }
 
 Entry.propTypes = {
-    entry: () => null,
+    entry: PropTypes.object,
+    update: PropTypes.func,
+    delete: PropTypes.func,
 };

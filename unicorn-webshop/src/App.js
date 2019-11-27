@@ -16,7 +16,7 @@ class App extends React.Component {
 
     render() {
         return (
-            <EntryList list={this.state.list} update={this.update} delete={this.delete} />
+            <EntryList list={this.state.list} update={this.update} delete={this.delete} create={this.create} />
         );
     }
 

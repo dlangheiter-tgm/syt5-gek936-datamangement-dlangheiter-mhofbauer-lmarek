@@ -25,17 +25,6 @@ export function deleteItem(shopItem) {
     db.remove(shopItem);
 }
 
-
-/**
- * If the checkbox-status of an item changes, the item will be changed
- * @param shopItem Shopping-List-Item
- * @param completed
- */
-export function checkboxChanged(shopItem, completed) {
-    shopItem.completed = completed;
-    db.put(shopItem);
-}
-
 /**
  * Updates all changes to the DB and takes all the changes from the central-remote-DB
  */
@@ -44,19 +33,9 @@ export function sync() {
 }
 
 /**
- * Changes the Title of an item
- * @param shopItem Shopping-List-Item
- * @param newTitle The new Title for the Shopping-List-Item
+ * Updates an Shopping-List-Item;
+ * @param shopItem The new shop item. (with _id and _rev)
  */
-export function updateTitle(shopItem, newTitle) {
-    shopItem.title = newTitle;
+export function updateEntry(shopItem) {
     db.put(shopItem);
 }
-
-export function updateAmount(shopItem, newCommentary) {
-    shopItem.commentary = newCommentary;
-    db.put(shopItem);
-}
-
-
-

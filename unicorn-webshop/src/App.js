@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {EntryList} from "./EntryList";
-import {db, sync, checkboxChanged, createItem, deleteItem} from './db';
+import {db, sync, createItem, deleteItem, updateEntry} from './db';
 
 class App extends React.Component {
 
@@ -37,7 +37,8 @@ class App extends React.Component {
     }
 
     update = (entry, v) => {
-        checkboxChanged(entry, v);
+        entry.completed = v;
+        updateEntry(entry, v);
         this.updateFromDb();
     };
 

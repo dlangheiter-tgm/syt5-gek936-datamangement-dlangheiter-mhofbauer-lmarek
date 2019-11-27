@@ -1,15 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {IconButton, List, TextField} from "@material-ui/core";
+import {Card, CardActions, CardContent, CardHeader, List, TextField, Button} from "@material-ui/core";
 import {Entry} from "./Entry";
-import AddIcon from "@material-ui/icons/Add";
 
 export class EntryList extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {addTitle: ''};
+        this.state = {
+            createTitle: '',
+            createCommentary: '',
+        };
     }
 
     render() {
@@ -24,23 +26,57 @@ export class EntryList extends React.Component {
                     />)}
                 </List>
                 <br/>
-                <TextField value={this.state.addTitle} onChange={this.setTitle}/>
-                <IconButton
-                    onClick={this.createItem}>
-                    <AddIcon/>
-                </IconButton>
+                <Card style={{margin: 24}} raised>
+                    <form noValidate autoComplete={'off'} onSubmit={this.createItem}>
+                        <CardHeader
+                            title={"New entry"}
+                        />
+                        <CardContent>
+
+                            <TextField
+                                label={"Item *"}
+                                fullWidth
+                                value={this.state.createTitle}
+                                onChange={this.setTitle}
+                            />
+                            <TextField
+                                margin={"normal"}
+                                label={"Commentary"}
+                                fullWidth
+                                value={this.state.createCommentary}
+                                onChange={this.setCommentary}
+                            />
+
+                        </CardContent>
+                        <CardActions>
+                            <Button color={"primary"} type={'submit'}>
+                                Create
+                            </Button>
+                        </CardActions>
+                    </form>
+                </Card>
             </div>
         );
     }
 
     setTitle = (e) => {
-        this.setState({addTitle: e.target.value});
+        this.setState({createTitle: e.target.value});
     };
 
-    createItem = () => {
-        this.props.create({title: this.state.addTitle, commentary: this.state.addTitle});
+    setCommentary = (e) => {
+        this.setState({createCommentary: e.target.value});
+    };
+
+    createItem = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (!this.state.createTitle) {
+            return;
+        }
+        this.props.create({title: this.state.createTitle, commentary: this.state.createCommentary});
         this.setState({
-            addTitle: "",
+            createTitle: '',
+            createCommentary: '',
         });
     };
 }

@@ -27,7 +27,6 @@ class App extends React.Component {
         db.allDocs({include_docs: true}).then(
             (result) => {
                 const setList = result.rows.map((r) => ({...r.doc}));
-                console.log(setList);
                 this.setState({
                     list: setList,
                 });

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {EntryList} from "./EntryList";
-import {db, sync, checkboxChanged} from './db';
+import {db, sync, checkboxChanged, createItem} from './db';
 
 class App extends React.Component {
 
@@ -32,14 +32,14 @@ class App extends React.Component {
 
     render() {
         return (
-            <EntryList list={this.state.list} update={this.update} delete={this.delete} create={this.create} />
+            <EntryList list={this.state.list} update={this.update} delete={this.delete} create={this.create}/>
         );
     }
 
     update = (entry, v) => {
         checkboxChanged(entry, v);
         this.updateFromDb();
-    }
+    };
 
     delete = (entry) => {
         const newList = this.state.list.filter(e => {
@@ -48,13 +48,11 @@ class App extends React.Component {
         this.setState(({
             list: newList,
         }));
-    }
+    };
 
     create = (entry) => {
-        const newList = this.state.list.add({title: entry, completed: false, id:'sad'});
-        this.setState(({
-            list: newList,
-        }));
+        createItem(entry.title, entry.commentary);
+        this.updateFromDb();
     }
 
 }

@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {ListItem, ListItemText, ListItemIcon, ListItemSecondaryAction, IconButton} from "@material-ui/core";
-import CheckIcon from '@material-ui/icons/Check';
-import CloseIcon from '@material-ui/icons/Close';
-import DeleteIcon from '@material-ui/icons/Delete';
+import {Check, Close, Delete} from '@material-ui/icons';
 
 export class Entry extends React.Component {
 
@@ -15,13 +13,15 @@ export class Entry extends React.Component {
                     <IconButton onClick={() => {
                         this.props.update(!entry.completed);
                     }}>
-                        {entry.completed ? <CheckIcon/> : <CloseIcon/>}
+                        {entry.completed
+                            ? <Check style={{color: '#28a745'}}/>
+                            : <Close style={{color: '#dc3545'}}/>}
                     </IconButton>
                 </ListItemIcon>
                 <ListItemText primary={entry.title} secondary={entry.commentary}/>
                 <ListItemSecondaryAction>
                     <IconButton onClick={this.props.delete}>
-                        <DeleteIcon/>
+                        <Delete/>
                     </IconButton>
                 </ListItemSecondaryAction>
             </ListItem>

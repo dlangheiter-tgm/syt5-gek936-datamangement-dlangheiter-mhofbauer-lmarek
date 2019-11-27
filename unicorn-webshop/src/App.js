@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {EntryList} from "./EntryList";
-import {db, sync, checkboxChanged, createItem} from './db';
+import {db, sync, checkboxChanged, createItem, deleteItem} from './db';
 
 class App extends React.Component {
 
@@ -42,12 +42,8 @@ class App extends React.Component {
     };
 
     delete = (entry) => {
-        const newList = this.state.list.filter(e => {
-            return e.id !== entry.id;
-        });
-        this.setState(({
-            list: newList,
-        }));
+        deleteItem(entry);
+        this.updateFromDb();
     };
 
     create = (entry) => {

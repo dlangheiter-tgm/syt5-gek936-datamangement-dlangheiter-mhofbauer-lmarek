@@ -4,7 +4,7 @@ import {EntryList} from "./EntryList";
 import {db, sync, createItem, deleteItem, updateEntry} from './db';
 import {CreateEntry} from "./CreateEntry";
 import {EditEntry} from "./EditEntry";
-import {withStyles} from "@material-ui/core";
+import {withStyles, AppBar, Toolbar, Typography, Link, Avatar} from "@material-ui/core";
 
 const styles = theme => ({
     root: {
@@ -15,6 +15,15 @@ const styles = theme => ({
             gridTemplateColumns: '1fr',
         }
     },
+    title: {
+        flexGrow: 1,
+    },
+    icon: {
+        marginRight: 8,
+    },
+    link: {
+         fontSize: '0.5rem'
+    }
 });
 
 class app extends React.Component {
@@ -36,6 +45,51 @@ class app extends React.Component {
 
     }
 
+    render() {
+        const classes = this.props.classes;
+
+        return (
+            <div>
+                <AppBar position={"static"}>
+                    <Toolbar>
+                        <Avatar variant="square" src={"/logo192.png"} className={classes.icon} />
+                        <Typography className={classes.title}>Unicorn Webshop</Typography>
+                        <Typography variant={"caption"} className={classes.link}>
+                            Icons made by <Link
+                                color="secondary"
+                                href="https://www.flaticon.com/authors/freepik"
+                                title="Freepik"
+                            > Freepik </Link>
+                            from <Link color={"secondary"}
+                                  href="https://www.flaticon.com/"
+                                  title="Flaticon">www.flaticon.com</Link
+                            >
+
+                        </Typography>
+                    </Toolbar>
+                </AppBar>
+                <div className={classes.root}>
+                    <EntryList
+                        list={this.state.list}
+                        update={this.updateCompleted}
+                        delete={this.delete}
+                        select={this.select}
+                    />
+                    <div>
+                        {this.state.curEdit &&
+                        <EditEntry
+                            entry={this.state.curEdit}
+                            update={this.updateGeneral}
+                            close={this.closeEdit}
+                        />
+                        }
+                        <CreateEntry create={this.create}/>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     updateFromDb() {
         db.allDocs({include_docs: true}).then(
             (result) => {
@@ -45,29 +99,6 @@ class app extends React.Component {
                 });
             }
         ).catch((err) => console.log(err));
-    }
-
-    render() {
-        return (
-            <div className={this.props.classes.root}>
-                <EntryList
-                    list={this.state.list}
-                    update={this.updateCompleted}
-                    delete={this.delete}
-                    select={this.select}
-                />
-                <div>
-                    {this.state.curEdit &&
-                    <EditEntry
-                        entry={this.state.curEdit}
-                        update={this.updateGeneral}
-                        close={this.closeEdit}
-                    />
-                    }
-                    <CreateEntry create={this.create}/>
-                </div>
-            </div>
-        );
     }
 
     updateCompleted = (entry, v) => {

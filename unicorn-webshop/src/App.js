@@ -1,10 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {EntryList} from "./EntryList";
 import {db, sync, createItem, deleteItem, updateEntry} from './db';
 import {CreateEntry} from "./CreateEntry";
 import {EditEntry} from "./EditEntry";
+import {withStyles} from "@material-ui/core";
 
-class App extends React.Component {
+const styles = theme => ({
+    root: {
+        display: 'grid',
+        gridTemplateColumns: '1fr 400px',
+        alignItems: 'start',
+        [theme.breakpoints.down('md')]: {
+            gridTemplateColumns: '1fr',
+        }
+    },
+});
+
+class app extends React.Component {
 
     constructor(props) {
         super(props);
@@ -36,7 +49,7 @@ class App extends React.Component {
 
     render() {
         return (
-            <div style={{display: 'grid', gridTemplateColumns: '1fr 400px', alignItems: 'start'}}>
+            <div className={this.props.classes.root}>
                 <EntryList
                     list={this.state.list}
                     update={this.updateCompleted}
@@ -83,14 +96,17 @@ class App extends React.Component {
         }, () => this.setState({
             curEdit: entry,
         }));
-    }
+    };
 
     closeEdit = () => {
         this.setState({
             curEdit: null,
         });
     }
-
 }
 
-export default App;
+app.propTypes = {
+    classes: PropTypes.object,
+};
+
+export default withStyles(styles)(app);

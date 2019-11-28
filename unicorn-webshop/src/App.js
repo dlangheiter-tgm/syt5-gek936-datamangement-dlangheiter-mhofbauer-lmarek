@@ -11,7 +11,7 @@ const styles = theme => ({
         display: 'grid',
         gridTemplateColumns: '1fr 400px',
         alignItems: 'start',
-        [theme.breakpoints.down('md')]: {
+        [theme.breakpoints.down('sm')]: {
             gridTemplateColumns: '1fr',
         }
     },

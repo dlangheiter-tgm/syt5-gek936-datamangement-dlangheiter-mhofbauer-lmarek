@@ -19,17 +19,18 @@ There are two parts to this project:
 ### The WebApp
 This is a React based OnePage Application.
 
+To run the following commands you need to go into the folder `unicorn-webshop`.
+
 To install all necessary dependencies run
 ```shell script
 npm install
 ```
 
-To run this you need to go into the folder `unicorn-webshop`.
 For development run
 ```shell script
 npm start
 ```
-This will open a server on port 3000. This will autoreload if you make changes to the srcs.
+This will open a server on port 3000. This will autoreload if you make changes to the src's.
 
 If you want to deploy it run
 ```shell script
@@ -37,17 +38,20 @@ npm run build
 ```
 This will build the application into the directory build. This can be hosted by any webserver (Apache, ...).
 
-### The DB-Server
+### The DB-Server  
 The DB-server is a simple couchbase server hosted in docker.
 
-To run the db server go into the directory `server`. Then run
+To run the db server cd into the directory `server`. Then run
 ```shell script
 docker-compose up -d
 ```
-
-**On First startup** you need to run the `setup-db.sh` script. This setups all necessary databases and users.
-
 This will start the db server in disconnected (-d) mode.
+
+**On First startup** you need to setup the db. This setups all necessary databases and users.
+```shell script
+bash setup-db.sh
+```
+
 The default login credentials are admin admin.
 
 ## Implementation
@@ -61,9 +65,9 @@ To achieve our project we split it into three parts, that will be managed by one
 
 ### Tasks
 * [x] **DB Server** Langheiter
-* [ ] **UI** Marek 
+* [x] **UI** Marek 
 * [x] **Client DB Synchronization** Hofbauer 
-* [ ] **Ui Api sync** Langheiter
+* [x] **Ui Api sync** Langheiter
 * [ ] **Testing**
 
 ## Resources

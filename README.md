@@ -1,7 +1,9 @@
-# "*Datamanagement - Synchronization*"
+# "Datamanagement - Synchronization"
+This is currently running at: https://unicorn.tgm.thekingdave.com/  
+The db is running at: https://couch.redt6a.thekingdave.com/
 
 ##
-Project to have a synchronized shopping list between client devices. 
+Project to have a synchronized shopping list between client devices.
 
 ## Task
 You can find the task details under [Task Description](TASK.md) which describes the required steps for realization.
